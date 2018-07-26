@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:id="@+id/reg_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="179dp"
+        android:ems="10"
+        android:hint="账户">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:ems="10"
+        android:hint="密码"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="194dp"
+        android:gravity="center"
+        android:text="Chat with someone." />
+
+    <Button
+        android:id="@+id/reg_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="116dp"
+        android:layout_marginStart="101dp"
+        android:text="注册" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/reg_new"
+        android:layout_alignBottom="@+id/reg_new"
+        android:layout_alignRight="@+id/reg_name"
+        android:layout_marginRight="16dp"
+        android:text="登陆" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="161dp"
+        android:layout_height="133dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/snake" />
+
+</RelativeLayout>
