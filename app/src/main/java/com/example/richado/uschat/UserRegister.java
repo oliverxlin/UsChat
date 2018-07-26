@@ -9,6 +9,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +19,7 @@ import android.os.Message;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Log;
 import android.app.Activity;
 import android.content.Intent;
@@ -32,7 +35,7 @@ import android.widget.TextView;
 
 
 public class UserRegister extends Activity {
-    private static String PATH ="123.206.45.190:5000/register/";
+    private static String PATH ="http://47.94.219.255:8080/register/";
     //注册用户，密码，确认密码
     EditText ed_name;
     EditText ed_pwd;
@@ -108,16 +111,34 @@ public class UserRegister extends Activity {
                 httpPost.setHeader("Accept", "application/json");
                 //执行请求对象
                 try {
+
+                    StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
                     //第三步：执行请求对象，获取服务器发还的相应对象
                     HttpResponse response = httpClient.execute(httpPost);
                     //第四步：检查相应的状态是否正常：检查状态码的值是200表示正常
                     if (response.getStatusLine().getStatusCode() == 200) {
                         //第五步：从相应对象当中取出数据，放到entity当中
-                        HttpEntity entity_rep = response.getEntity();
-                        BufferedReader reader = new BufferedReader(
-                                new InputStreamReader(entity_rep.getContent()));
-                        String result = reader.readLine();
-                        Log.d("HTTP", "POST:" + result);
+                        String result = EntityUtils.toString(response.getEntity());
+                        //解析json数据
+//                        JSONArray result_array = new JSONArray(result);
+//                        for(int i = 0;i < result_array.length();i++){
+//                            JSONObject jsonob = result_array.getJSONObject(i);
+//                            String rep_name = jsonob.getString("name");
+//                            String rep_pwd = jsonob.getString("pwd");
+//                        }
+//                       获取二层嵌套数据
+
+
+                        JSONObject jsonob_1 = new JSONObject(result);
+                        String rep_msg = jsonob_1.getString("msg");
+                        JSONObject jsonob_2 = new JSONObject(rep_msg);
+                        String rep_name = jsonob_2.getString("name");
+                        String rep_pwd = jsonob_2.getString("pwd");
+                        Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
+//                        页面跳转
+                        Intent intent=new Intent();
+                        intent.setClass(UserRegister.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
