@@ -137,7 +137,7 @@ public class UserRegister extends Activity {
                         Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
 //                        页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(UserRegister.this, MainActivity.class);
+                        intent.setClass(UserRegister.this, ChatActivity.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {

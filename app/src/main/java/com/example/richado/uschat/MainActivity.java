@@ -62,6 +62,9 @@ public class MainActivity extends Activity {
                 String pwd = ed_pwd.getText().toString();
                 PostThread postThread = new PostThread(name, pwd);
                 postThread.start();
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this, ChatActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -145,7 +148,7 @@ public class MainActivity extends Activity {
                         Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
 //                        页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(MainActivity.this, MainActivity.class);
+                        intent.setClass(MainActivity.this, ChatActivity.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {
