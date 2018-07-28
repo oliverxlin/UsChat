@@ -1,5 +1,6 @@
 package com.example.richado.uschat;
 
+import com.example.richado.nav.NavActivity;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -137,7 +138,7 @@ public class UserRegister extends Activity {
                         Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
 //                        页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(UserRegister.this, ChatActivity.class);
+                        intent.setClass(UserRegister.this, NavActivity.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {

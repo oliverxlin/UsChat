@@ -31,7 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
-
+import com.example.richado.nav.NavActivity
 public class MainActivity extends Activity {
 
     private static String PATH ="http://47.94.219.255:8080/register/";
@@ -148,7 +148,7 @@ public class MainActivity extends Activity {
                         Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
 //                        页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(MainActivity.this, ChatActivity.class);
+                        intent.setClass(MainActivity.this, NavActivity.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {
