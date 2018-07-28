@@ -12,7 +12,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import android.support.v7.app.AppCompatActivity;
 import android.content.Entity;
 import android.os.Handler;
 import android.os.Message;
@@ -31,8 +31,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.TextView;
-import com.example.richado.nav.NavActivity
-public class MainActivity extends Activity {
+import com.example.richado.nav.NavActivity;
+public class MainActivity extends AppCompatActivity {
 
     private static String PATH ="http://47.94.219.255:8080/register/";
     EditText ed_name;
@@ -62,9 +62,6 @@ public class MainActivity extends Activity {
                 String pwd = ed_pwd.getText().toString();
                 PostThread postThread = new PostThread(name, pwd);
                 postThread.start();
-                Intent intent=new Intent();
-                intent.setClass(MainActivity.this, ChatActivity.class);
-                startActivity(intent);
             }
         });
 

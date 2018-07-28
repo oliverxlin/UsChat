@@ -3,7 +3,7 @@ package com.example.richado.uschat;
 import com.example.richado.nav.NavActivity;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+import android.support.v7.app.AppCompatActivity;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -35,7 +35,7 @@ import android.widget.TextView;
 
 
 
-public class UserRegister extends Activity {
+public class UserRegister extends AppCompatActivity {
     private static String PATH ="http://47.94.219.255:8080/register/";
     //注册用户，密码，确认密码
     EditText ed_name;
