@@ -12,6 +12,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.app.backup.SharedPreferencesBackupHelper;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Entity;
 import android.os.Handler;
@@ -34,7 +37,7 @@ import android.widget.TextView;
 import com.example.richado.nav.NavActivity;
 public class MainActivity extends AppCompatActivity {
 
-    private static String PATH ="http://47.94.219.255:8080/register/";
+    private static String PATH ="http://47.94.219.255:8080/get_token/";
     EditText ed_name;
     EditText ed_pwd;
 
@@ -100,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
 
             JSONObject params = new JSONObject();
             try {
-                params.put("name",this.name);
-                params.put("pwd",this.pwd);
+                params.put("username",this.name);
+                params.put("password",this.pwd);
 //		...
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -128,24 +131,24 @@ public class MainActivity extends AppCompatActivity {
                         //第五步：从相应对象当中取出数据，放到entity当中
                         String result = EntityUtils.toString(response.getEntity());
                         //解析json数据
-//                        JSONArray result_array = new JSONArray(result);
-//                        for(int i = 0;i < result_array.length();i++){
-//                            JSONObject jsonob = result_array.getJSONObject(i);
-//                            String rep_name = jsonob.getString("name");
-//                            String rep_pwd = jsonob.getString("pwd");
-//                        }
-//                       获取二层嵌套数据
-
+//
 
                         JSONObject jsonob_1 = new JSONObject(result);
                         String rep_msg = jsonob_1.getString("msg");
-                        JSONObject jsonob_2 = new JSONObject(rep_msg);
-                        String rep_name = jsonob_2.getString("name");
-                        String rep_pwd = jsonob_2.getString("pwd");
-                        Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
-//                        页面跳转
+                        String rep_status = jsonob_1.getString("status");
+                        Log.d("HTTP", "POST:" +"msg:" + rep_msg+"status:" + rep_status);
+
+//                      写入用户信息
+                        SharedPreferences user_info = getSharedPreferences("setting",0);
+                        SharedPreferences.Editor editor = user_info.edit();
+                        editor.clear();
+                        editor.putString("name",this.name);
+                        editor.putString("password",this.pwd);
+                        editor.commit();
+
+//                       页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(MainActivity.this, NavActivity.class);
+                        intent.setClass(MainActivity.this, com.example.richado.uschat.Menu.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {

@@ -93,8 +93,8 @@ public class UserRegister extends AppCompatActivity {
 
             JSONObject params = new JSONObject();
             try {
-                params.put("name", this.name);
-                params.put("pwd", this.pwd);
+                params.put("username", this.name);
+                params.put("password", this.pwd);
 //		...
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -132,13 +132,11 @@ public class UserRegister extends AppCompatActivity {
 
                         JSONObject jsonob_1 = new JSONObject(result);
                         String rep_msg = jsonob_1.getString("msg");
-                        JSONObject jsonob_2 = new JSONObject(rep_msg);
-                        String rep_name = jsonob_2.getString("name");
-                        String rep_pwd = jsonob_2.getString("pwd");
-                        Log.d("HTTP", "POST:" +"name:"+rep_name+"pwd:"+rep_pwd);
+                        String rep_status = jsonob_1.getString("status");
+                        Log.d("HTTP", "POST:" +"msg:" + rep_msg+"status:" + rep_status);
 //                        页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(UserRegister.this, NavActivity.class);
+                        intent.setClass(UserRegister.this, Menu.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {
