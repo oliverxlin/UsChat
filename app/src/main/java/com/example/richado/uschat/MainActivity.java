@@ -13,6 +13,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
 import android.app.backup.SharedPreferencesBackupHelper;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -63,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 String name = ed_name.getText().toString();
                 String pwd = ed_pwd.getText().toString();
+                AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+
+//设置内容
+                builder.setIcon(R.mipmap.ic_launcher);
+//设置头像Icon
+                builder.setView(R.layout.wait_login);
+                builder.show();
                 PostThread postThread = new PostThread(name, pwd);
                 postThread.start();
             }
@@ -95,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
+
             HttpClient httpClient = new DefaultHttpClient();
             String url = PATH;
             //第二步：生成使用POST方法的请求对象
@@ -145,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.putString("name",this.name);
                         editor.putString("password",this.pwd);
                         editor.commit();
+
 
 //                       页面跳转
                         Intent intent=new Intent();

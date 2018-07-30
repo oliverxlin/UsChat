@@ -136,7 +136,7 @@ public class UserRegister extends AppCompatActivity {
                         Log.d("HTTP", "POST:" +"msg:" + rep_msg+"status:" + rep_status);
 //                        页面跳转
                         Intent intent=new Intent();
-                        intent.setClass(UserRegister.this, Menu.class);
+                        intent.setClass(UserRegister.this, com.example.richado.uschat.Menu.class);
                         startActivity(intent);
                     }
                 } catch (Exception e) {
