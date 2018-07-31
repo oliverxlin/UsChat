@@ -6,39 +6,17 @@
     >
 
     <EditText
-        android:id="@+id/reg_name"
+        android:id="@+id/reg_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="239dp"
         android:ems="10"
-        android:hint="账户">
+        android:hint="输入邮箱">
 
         <requestFocus />
     </EditText>
-
-    <EditText
-        android:id="@+id/reg_pwd1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="229dp"
-        android:ems="10"
-        android:hint="密码"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/reg_pwd2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="172dp"
-        android:ems="10"
-        android:hint="确认密码"
-        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/info"
@@ -58,7 +36,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:text="注册" />
-
 
     <ImageView
         android:id="@+id/imageView"

@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".SetActivity">
 
+    <Button
+        android:id="@+id/change_name"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/btn"
+        android:text="更改用户名"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info" />
+
+    <Button
+        android:id="@+id/change_pwd"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="47dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/btn"
+        android:text="更改密码"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_name" />
+
+    <Button
+        android:id="@+id/change_3"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="169dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/btn"
+        android:text="设置3"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_pwd" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="92dp"
+        android:layout_height="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="146dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="41dp"
+        android:gravity="center"
+        android:text="设  置"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

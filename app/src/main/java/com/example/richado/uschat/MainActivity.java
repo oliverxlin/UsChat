@@ -66,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 String pwd = ed_pwd.getText().toString();
                 AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
 
-//设置内容
                 builder.setIcon(R.mipmap.ic_launcher);
-//设置头像Icon
                 builder.setView(R.layout.wait_login);
                 builder.show();
                 PostThread postThread = new PostThread(name, pwd);

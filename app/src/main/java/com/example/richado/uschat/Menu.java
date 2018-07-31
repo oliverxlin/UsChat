@@ -54,7 +54,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent intent=new Intent();
-                intent.setClass(Menu.this,SetActivity .class);
+                intent.setClass(Menu.this,SetActivity.class);
                 startActivity(intent);
             }
         });
