@@ -3,6 +3,8 @@ package com.example.richado.uschat;
 import com.example.richado.nav.NavActivity;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -62,6 +64,12 @@ public class UserRegister extends AppCompatActivity {
                 String name = ed_name.getText().toString();
                 String pwd = ed_pwd.getText().toString();
                 String pwd2 = ed_pwd2.getText().toString();
+                AlertDialog.Builder builder= new AlertDialog.Builder(UserRegister.this);
+
+                builder.setIcon(R.mipmap.ic_launcher);
+                builder.setView(R.layout.wait_reg);
+                builder.show();
+
                 PostThread postThread = new PostThread(name, pwd, pwd2);
                 postThread.start();
             }
@@ -121,13 +129,6 @@ public class UserRegister extends AppCompatActivity {
                         //第五步：从相应对象当中取出数据，放到entity当中
                         String result = EntityUtils.toString(response.getEntity());
                         //解析json数据
-//                        JSONArray result_array = new JSONArray(result);
-//                        for(int i = 0;i < result_array.length();i++){
-//                            JSONObject jsonob = result_array.getJSONObject(i);
-//                            String rep_name = jsonob.getString("name");
-//                            String rep_pwd = jsonob.getString("pwd");
-//                        }
-//                       获取二层嵌套数据
 
 
                         JSONObject jsonob_1 = new JSONObject(result);
