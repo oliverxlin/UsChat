@@ -17,10 +17,10 @@ public class ChatActivity extends Activity {
     private Button send;
     private MsgAdapter adapter;
     private List<Msg> msgList = new ArrayList<Msg>();
-    SharedPreferences user_info = getSharedPreferences("setting",0);
-    final String name = user_info.getString("name","");
-    final String matched_name=user_info.getString("matchedname","");
     protected void onCreate(Bundle saveInstanceState){
+        SharedPreferences user_info = getSharedPreferences("setting",0);
+        final String name = user_info.getString("name","");
+        final String matched_name=user_info.getString("matchedname","");
         super.onCreate(saveInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.chatmain_layout);
@@ -32,7 +32,7 @@ public class ChatActivity extends Activity {
             send = (Button) findViewById(R.id.send);
             msgListView = (ListView) findViewById(R.id.msg_list_view);
             msgListView.setAdapter(adapter);
-
+            new Thread(new Receive(client)).start();
             //发送按钮的点击事件
             send.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,6 +67,8 @@ public class ChatActivity extends Activity {
 
         @Override
         public void run() {
+            SharedPreferences user_info = getSharedPreferences("setting",0);
+            final String matched_name=user_info.getString("matchedname","");
             while(true){
                 try{
                     String content=client.ReceiveMessage();
