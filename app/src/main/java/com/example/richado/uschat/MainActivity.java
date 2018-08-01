@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 String pwd = ed_pwd.getText().toString();
                 AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
 
+//设置内容
                 builder.setIcon(R.mipmap.ic_launcher);
+//设置头像Icon
                 builder.setView(R.layout.wait_login);
                 builder.show();
                 PostThread postThread = new PostThread(name, pwd);
@@ -151,9 +153,15 @@ public class MainActivity extends AppCompatActivity {
                         editor.clear();
                         editor.putString("name",this.name);
                         editor.putString("password",this.pwd);
+                        String token=jsonob_1.getJSONObject("msg").getJSONObject("data").getString("token");
+                        editor.putString("token", token);
                         editor.commit();
-
-
+                        try {
+                            SocketClient client = new SocketClient("123.206.45.190", 7199);
+                            client.SendMessage("username:"+this.name);
+                        }catch (Exception e) {
+                            e.printStackTrace();
+                        }
 //                       页面跳转
                         Intent intent=new Intent();
                         intent.setClass(MainActivity.this, com.example.richado.uschat.Menu.class);
